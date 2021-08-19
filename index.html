@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>SI Calculator</title>
+
+	<style>
+		body {
+			background-color: yellow;
+			font-family: 'Trebuchet MS';
+		}
+		
+		h1 {
+			font-size: 35px;
+		}
+		
+		h1 {
+			font-size: 21px;
+			margin-top: 20px;
+		}
+		
+		.calculator {
+			width: 300px;
+			height: 450px;
+			background-color: black;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			padding: 20px 0px 0px 100px;
+			border-radius: 50px;
+			color: white;
+            display: inline;
+		}
+		
+		input {
+			padding: 7px;
+			width: 70%;
+			margin-top: 7px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="calculator">
+		<h1>SI Calculator</h1>
+
+		<!-- Calling Calculate function defined in app.js -->
+		<p>Amount (₹) 	:
+			<input id="amount" type="number"
+			onchange="Calculate()">
+		</p>
+
+		<p>Interest Rate :
+			<input id="rate" type="number"
+			onchange="Calculate()">
+		</p>
+
+		<p>Months to Pay :
+			<input id="months" type="number"
+			onchange="Calculate()">
+		</p>
+
+		<h2 id="total"></h2>
+	</div>
+
+<script>
+function Calculate() {
+	const amount = document.querySelector("#amount").value;
+	const rate = document.querySelector("#rate").value;
+	const months = document.querySelector("#months").value;
+	const interest = (amount * (rate * 0.01)) / months;
+	const total = ((amount / months) + interest).toFixed(2);
+
+	document.querySelector("#total").innerHTML = "EMI : (₹)" + total;
+}
+</script>
+</body>
+</html>
